@@ -1,0 +1,27 @@
+#add user to sudo
+sudo visudo
+darkstar ALL=(ALL:ALL) ALL
+
+tu_usuario ALL=(ALL) NOPASSWD:ALL
+sudo -l
+
+#add an startup script
+nano ~/start_terminal.sh
+
+#!/bin/bash
+gnome-terminal -- htop
+
+chmod +x ~/start_terminal.sh
+
+gnome-session-properties
+
+#add /home/tu_usuario/start_terminal.sh
+
+
+#!/bin/bash
+# Abrir la primera terminal en la posición inicial
+gnome-terminal --geometry=80x24+0+0 -- bash -c "htop"
+sleep 1
+# Abrir la segunda terminal justo debajo de la primera
+gnome-terminal --geometry=80x24+0+400 -- bash -c "otro_comando"
+
